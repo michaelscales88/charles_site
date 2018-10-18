@@ -1,0 +1,31 @@
+<!-- inventory module page -->
+{% extends 'base_layout.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <p>Image Area</p>
+    </div>
+    <div class="row-fluid">
+        <div id="tableDiv"></div>
+    </div>
+    <div class="row-fluid">
+        <p>Image Area</p>
+    </div>
+</div>
+{% block footer %}
+<div class="container-fluid">
+    &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
+</div>
+{% endblock %}
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+$(document).ready(function () {
+    getTableDiv("{{ url_for('inventory_bp.getinventorytable') }}");
+});
+</script>
+{% endblock scripts %}

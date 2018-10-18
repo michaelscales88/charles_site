@@ -1,3 +1,5 @@
+bcrypt
+cssmin
 flask
 flask-admin
 sqlalchemy
@@ -5,6 +7,7 @@ flask-sqlalchemy
 flask-security
 flask-restful
 jwt
+jsmin
 pyjwt
 sqlalchemy-mixins
 flask-bootstrap
