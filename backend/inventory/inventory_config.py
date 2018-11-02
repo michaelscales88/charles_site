@@ -3,4 +3,8 @@ INVENTORY_MODULE_ROUTES = {
         "url": "/api/inventory/table",
         "methods": {}
     },
+    "GetBuyNowInfo": {
+        "url": "/api/inventory/buy_info",
+        "methods": {}
+    }
 }

@@ -1,5 +1,23 @@
-function buyNow(api, id) {
-    alert(id);
+function buyNow(id) {
+    console.log(id);
+    $.ajax({
+        url: "/api/inventory/buy_info",
+        method: "POST",
+        dataType: "JSON",
+        data: JSON.stringify({
+            id: id
+        }),
+        success: function (json, statusCode) {
+            console.log(json, statusCode);
+            if (statusCode === 'success') {
+                let buy_info = JSON.parse(json);
+                console.log(buy_info);
+                $('#buyNowTitle').html(buy_info.name);
+                $('#buyNowArea').html(buy_info.buy_button);
+                $("#buyNowModal").modal("show");
+            }
+        }
+    });
 }
 
 function getTableDiv(api) {
@@ -27,7 +45,7 @@ function getTableDiv(api) {
                 $.each(json.columns, function (j, col) {
                     data[i].push(val[col]);
                 });
-                let button = '<button onclick="buyNow(' + i + ')">Buy Now</button>';
+                let button = '<button onclick="buyNow(' + val.id + ')">Buy Now</button>';
                 data[i].push(button);
             });
 

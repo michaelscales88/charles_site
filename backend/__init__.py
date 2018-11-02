@@ -3,7 +3,7 @@ from flask_assets import Bundle
 
 import frontend
 from .extensions import (
-    db, admin, boot, babel, ma, mail,
+    db, admin, boot, babel, cors, ma, mail,
     health, moment, register_app_cdn, assets, debugger
 )
 
@@ -20,6 +20,7 @@ import backend.core as core
 admin.init_app(server)
 babel.init_app(server)
 boot.init_app(server)
+cors.init_app(server)
 ma.init_app(server)
 mail.init_app(server)
 moment.init_app(server)
@@ -45,6 +46,7 @@ assets.register('js_all', js)
 assets.register('css_all', css)
 nav = frontend.get_nav()
 nav.init_app(server)
+frontend.add_nav_render(server)
 server.register_blueprint(frontend.frontend_bp)
 
 if server.config.get("DEBUG", False):

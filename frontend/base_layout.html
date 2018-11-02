@@ -33,7 +33,7 @@
 
 {% block navbar %}
     {{ super() }}
-    {{ nav.secnavbar.render() }}
+    {{ nav.secnavbar.render(renderer='custom') }}
     {% import "bootstrap/utils.html" as utils %}
     <div class="container-fluid">
         <!-- Flask - Alert area -->

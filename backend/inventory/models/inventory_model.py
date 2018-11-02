@@ -13,6 +13,7 @@ class InventoryModel(db.Model):
     retail = db.Column(db.Float)
     sku = db.Column(db.String)
     description = db.Column(db.Text)
+    buy_button = db.Column(db.Text)
 
     def __str__(self):
         return self.name

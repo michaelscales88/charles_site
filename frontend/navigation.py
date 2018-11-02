@@ -1,8 +1,16 @@
 # services/flask_nav.py
 from flask import current_app
-from flask_nav import Nav
+from flask_nav import Nav, register_renderer
+from flask_bootstrap.nav import BootstrapRenderer
 from flask_nav.elements import Navbar, View, Subgroup
 from flask_security import current_user
+
+
+class CustomRenderer(BootstrapRenderer):
+    def visit_Navbar(self, node):
+        nav_tag = super(CustomRenderer, self).visit_Navbar(node)
+        nav_tag['class'] += 'navbar navbar-inverse navbar-fixed-top'
+        return nav_tag
 
 
 def mynavbar():
@@ -36,3 +44,7 @@ def get_nav():
     nav.register_element('mynavbar', mynavbar)
     nav.register_element('secnavbar', secnavbar)
     return nav
+
+
+def add_nav_render(server):
+    register_renderer(server, 'custom', CustomRenderer)

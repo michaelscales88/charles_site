@@ -3,7 +3,7 @@ cssmin
 flask
 flask-admin
 sqlalchemy
-flask-sqlalchemy
+flask-cors
 flask-security
 flask-restful
 jwt
