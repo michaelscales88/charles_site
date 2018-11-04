@@ -49,7 +49,6 @@
 
 {% block scripts %}
     {{ super() }}
-    {{ moment.include_moment() }}
 
     <!-- CDN JS Files-->
     <script src="{{ bootstrap_find_resource('js/jquery.dataTables.js', cdn='dataTable', use_minified=true) }}"></script>

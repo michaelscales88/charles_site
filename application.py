@@ -1,5 +1,5 @@
-from backend import server
+from backend import server as application
 
 
 if __name__ == '__main__':
-    server.run()
+    application.run()

@@ -14,7 +14,7 @@ CSRF_ENABLED = os.getenv("CSRF_ENABLED", True)
 ROWS_PER_PAGE = 50
 
 # Development Settings
-PRODUCTION_MODE = os.getenv("FLASK_ENV", "development") == 'production'
+PRODUCTION_MODE = os.getenv("FLASK_ENV", "production") == 'production'
 DEBUG = not PRODUCTION_MODE  # Toggle off during release
 DEBUG_TOOLBAR_ENABLED = not PRODUCTION_MODE  # Gives information about routes
 NOISY_ERROR = PRODUCTION_MODE

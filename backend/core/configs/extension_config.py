@@ -3,7 +3,7 @@ import os
 SITE_NAME = os.getenv("SITE_NAME", "DEFAULT")
 
 # Flask-Bootstrap Settings
-BOOTSTRAP_SERVE_LOCAL = True
+BOOTSTRAP_SERVE_LOCAL = False
 BOOTSTRAP_USE_MINIFIED = False
 
 # Flask-Mail settings
