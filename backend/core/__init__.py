@@ -8,7 +8,7 @@ from backend.extensions import admin, db
 from backend.base_model import BaseModel
 
 from .route_builder import build_routes
-from .utilities import ExtendedLoginForm, ExtendedRegisterForm
+from .utilities import ExtendedLoginForm
 
 # Configure app settings
 import backend.core.config_runner

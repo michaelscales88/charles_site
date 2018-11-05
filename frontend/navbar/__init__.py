@@ -14,20 +14,17 @@ nav = Nav()
 def secnavbar():
     return ExtendedNavbar(
         title=View(current_app.config.get('SITE_NAME'), 'frontend.index'),
-        root_class='navbar navbar-inverse navbar-fixed-top',
+        root_class='navbar navbar-inverse',
         items=(
             View('Home', 'frontend.index'),
         ),
         right_items=(
-            View('About', 'admin.index'),
+            View('About', 'frontend.about'),
             Subgroup(
                 'Admin',
                 View('Admin Page', 'admin.index'),
                 View('Log out', 'logout')
-            )
-        ) if current_user.is_authenticated else (
-            View('About', 'admin.index'),
-            View('Log in', 'admin.index')
+            ) if current_user.is_authenticated else View('Log in', 'admin.index')
         )
     )
 

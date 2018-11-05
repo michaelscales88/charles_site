@@ -27,6 +27,7 @@ mail.init_app(server)
 assets.init_app(server)
 
 """ Submodule Imports """
+import backend.about
 import backend.inventory
 
 
@@ -36,8 +37,10 @@ register_app_cdn(server)
 
 # Add server's static files to be bundled and minified
 js = Bundle(
+    'js/aboutPage.js',
     'js/gridArea.js',
     'js/buyNow.js',
+    'js/backToTop.js',
     filters='jsmin', output='gen/packed.js'
 )
 css = Bundle(

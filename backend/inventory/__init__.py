@@ -22,7 +22,7 @@ with server.app_context():
     admin.add_view(
         views.ImageView(
             models.ImageModel, db.session,
-            name='Change Coffe Pictures', category='Manage Inventory'
+            name='Change Coffee Pictures', category='Manage Inventory'
         )
     )
     admin.add_view(

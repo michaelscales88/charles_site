@@ -1,5 +1,4 @@
 from backend.base_view import BaseView
-from ..models import UserModel
 
 
 class UsersView(BaseView):

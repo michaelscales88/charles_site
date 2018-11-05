@@ -12,3 +12,11 @@ def index():
         'index.html',
         title='Home'
     )
+
+
+@frontend_bp.route("/about")
+def about():
+    return render_template(
+        'about.html',
+        title='About Us'
+    )

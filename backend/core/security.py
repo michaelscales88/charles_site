@@ -7,14 +7,13 @@ from flask_security.utils import hash_password
 from backend import server
 from backend.extensions import admin, db
 from .models import UserModel, RolesModel
-from .utilities import ExtendedLoginForm, ExtendedRegisterForm
+from .utilities import ExtendedLoginForm
 
 
 user_datastore = SQLAlchemyUserDatastore(db, UserModel, RolesModel)
 security = Security(
     server, user_datastore,
-    login_form=ExtendedLoginForm,
-    register_form=ExtendedRegisterForm
+    login_form=ExtendedLoginForm
 )
 
 
