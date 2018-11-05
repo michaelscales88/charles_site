@@ -1,6 +1,6 @@
 from marshmallow import fields
-from backend.extensions import ma
-from backend.inventory.models.inventory_model import InventoryModel
+from ..extensions import ma
+from .models import InventoryModel
 
 
 class CurrencyField(fields.Field):

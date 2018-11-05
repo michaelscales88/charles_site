@@ -1,6 +1,7 @@
 import os
 import os.path as op
 from sqlalchemy.event import listens_for
+from sqlalchemy.ext.hybrid import hybrid_property
 from flask_admin import form
 
 from ..extensions import db
@@ -32,10 +33,15 @@ class AboutPageInfo(db.Model):
     __tablename__ = "about_info"
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
     description = db.Column(db.Text)
 
     image_id = db.Column(db.Integer, db.ForeignKey('about_image.id'))
     image = db.relationship("AboutImageModel", back_populates="about_info")
+
+    @hybrid_property
+    def path(self):
+        return self.image.path
 
 
 @listens_for(AboutImageModel, 'after_delete')

@@ -51,4 +51,4 @@ class AboutImageView(BaseView):
 
 
 class AboutView(BaseView):
-    pass
+    form_columns = ("title", "description", "image")

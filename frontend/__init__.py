@@ -9,7 +9,7 @@ frontend_bp = Blueprint('frontend', __name__)
 @frontend_bp.route("/")
 def index():
     return render_template(
-        'index.html',
+        'pages/index.html',
         title='Home'
     )
 
@@ -17,6 +17,6 @@ def index():
 @frontend_bp.route("/about")
 def about():
     return render_template(
-        'about.html',
+        'pages/about.html',
         title='About Us'
     )
