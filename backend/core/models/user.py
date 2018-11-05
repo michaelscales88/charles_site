@@ -1,7 +1,7 @@
 # security/models.py
 import datetime
 from flask_security import UserMixin
-from backend.extensions import db
+from ...extensions import db
 from .roles import RolesModel
 
 roles_users = db.Table(

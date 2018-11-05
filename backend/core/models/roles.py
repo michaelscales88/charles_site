@@ -1,6 +1,6 @@
 # user/models/roles.py
 from flask_security import RoleMixin
-from backend.extensions import db
+from ...extensions import db
 
 
 class RolesModel(db.Model, RoleMixin):

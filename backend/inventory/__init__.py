@@ -20,6 +20,12 @@ with server.app_context():
         )
     )
     admin.add_view(
+        views.ImageView(
+            models.ImageModel, db.session,
+            name='Change Coffe Pictures', category='Manage Inventory'
+        )
+    )
+    admin.add_view(
         views.InventoryStockView(
             models.InventoryStockModel, db.session,
             name='Change Stock', category='Manage Inventory'
@@ -36,4 +42,3 @@ with server.app_context():
     build_routes(server, inventory_api, "inventory")
 
     server.register_blueprint(inventory_bp)
-

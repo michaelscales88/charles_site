@@ -1,3 +1,4 @@
+from flask_admin import form
 from backend.extensions import db
 from sqlalchemy.ext.hybrid import hybrid_property
 from .sales_model import SalesModel
@@ -15,8 +16,15 @@ class InventoryModel(db.Model):
     description = db.Column(db.Text)
     buy_button = db.Column(db.Text)
 
+    image_id = db.Column(db.Integer, db.ForeignKey('image.id'))
+    image = db.relationship("ImageModel", back_populates="inventory")
+
     def __str__(self):
         return self.name
+
+    @hybrid_property
+    def path(self):
+        return form.thumbgen_filename(self.image.path)
 
     @hybrid_property
     def quantity(self):

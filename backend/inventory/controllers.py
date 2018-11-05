@@ -9,7 +9,6 @@ class GetInventoryTable(Resource):
     def get(self):
         view_columns = list(inv_table_schema.Meta.fields)
         view_columns.pop(0)     # Remove id from the view
-        view_columns.pop(2)     # Remove description from the view
         return jsonify(
             data=inv_table_schema.dumps(InventoryModel.all()).data,
             columns=view_columns
@@ -26,7 +25,6 @@ class GetBuyNowInfo(Resource):
     def post(self):
         inventory_model = InventoryModel.find(self.args['id'])
         if inventory_model:
-            buy_info = buy_now_schema.dumps(inventory_model).data
-            return jsonify(buy_info)
+            return jsonify(buy_now_schema.dumps(inventory_model).data)
         else:
             return abort(404, "No inventory exists for model id: {id}".format(id=self.args['id']))

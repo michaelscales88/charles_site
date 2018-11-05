@@ -1,25 +1,3 @@
-function buyNow(id) {
-    console.log(id);
-    $.ajax({
-        url: "/api/inventory/buy_info",
-        method: "POST",
-        dataType: "JSON",
-        data: JSON.stringify({
-            id: id
-        }),
-        success: function (json, statusCode) {
-            console.log(json, statusCode);
-            if (statusCode === 'success') {
-                let buy_info = JSON.parse(json);
-                console.log(buy_info);
-                $('#buyNowTitle').html(buy_info.name);
-                $('#buyNowArea').html(buy_info.buy_button);
-                $("#buyNowModal").modal("show");
-            }
-        }
-    });
-}
-
 function getTableDiv(api) {
     return $.ajax({
         url: api,
@@ -35,7 +13,7 @@ function getTableDiv(api) {
             $tableDiv.append($table);
 
             $.each(json.columns, function (i, val) {
-                $('#displayTable thead tr').append("<th>" + val + "</th>")
+                $('#displayTable thead tr').append("<th>" + val[0].toUpperCase() + val.slice(1) + "</th>")
             });
             $('#displayTable thead tr').append("<th>Buy</th>");
 
@@ -43,7 +21,8 @@ function getTableDiv(api) {
             $.each(JSON.parse(json.data), function (i, val) {
                 data.push([]);
                 $.each(json.columns, function (j, col) {
-                    data[i].push(val[col]);
+                    if (col === 'retail') data[i].push(`$ ${val[col]} USD`);
+                    else data[i].push(val[col]);
                 });
                 let button = '<button onclick="buyNow(' + val.id + ')">Buy Now</button>';
                 data[i].push(button);

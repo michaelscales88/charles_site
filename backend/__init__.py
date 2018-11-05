@@ -31,10 +31,13 @@ import backend.inventory
 
 
 """ Register HTML """
+# Register external CDNs
 register_app_cdn(server)
+
 # Add server's static files to be bundled and minified
 js = Bundle(
     'js/gridArea.js',
+    'js/buyNow.js',
     filters='jsmin', output='gen/packed.js'
 )
 css = Bundle(
@@ -43,7 +46,11 @@ css = Bundle(
 )
 assets.register('js_all', js)
 assets.register('css_all', css)
+
+# Nav Settings
 nav = frontend.get_nav()
 nav.init_app(server)
-frontend.add_nav_render(server)
+frontend.register_nav_renderers(server)
+
+# Register HTML endpoints
 server.register_blueprint(frontend.frontend_bp)
