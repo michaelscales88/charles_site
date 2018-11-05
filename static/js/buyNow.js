@@ -16,10 +16,10 @@ function buyNow(id) {
                         <div class="row-fluid text-center">
                             <div class="col-lg-4"><img class="text-center" src='/static/img/${buy_info.path}'></div>
                             <div class="col-lg-4"><b class="text-center">${buy_info.description}</b></div>
-                            <div class="col-lg-4">
-                                <h3 class="text-center">$ ${buy_info.retail} USD</h3>
-                                <div class="text-center">${buy_info.buy_button}</div>
-                            </div>
+                            <div class="col-lg-4"><i class="fa fa-dollar"></i><b>${buy_info.retail}</b></div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="text-center">${buy_info.buy_button}</div>
                         </div>
                     </div>`
                 );

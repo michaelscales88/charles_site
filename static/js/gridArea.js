@@ -15,16 +15,17 @@ function getTableDiv(api) {
             $.each(json.columns, function (i, val) {
                 $('#displayTable thead tr').append("<th>" + val[0].toUpperCase() + val.slice(1) + "</th>")
             });
-            $('#displayTable thead tr').append("<th>Buy</th>");
+            $('#displayTable thead tr').append("<th>Buy Now</th>");
 
             let data = [];
             $.each(JSON.parse(json.data), function (i, val) {
                 data.push([]);
                 $.each(json.columns, function (j, col) {
-                    if (col === 'retail') data[i].push(`$ ${val[col]} USD`);
-                    else data[i].push(val[col]);
+                    if (col === 'retail') data[i].push(`<i class="fa fa-dollar"></i><b>${val[col]}</b>`);
+                    else data[i].push(`<b>${val[col]}</b>`);
                 });
-                let button = '<button onclick="buyNow(' + val.id + ')">Buy Now</button>';
+                let button = '<button class="btn btn-primary text-center" style="width: 100%;" onclick="buyNow(' + val.id + ')">' +
+                    '<i class="fa fa-shopping-cart" style="font-size:24px"></i></i></button>';
                 data[i].push(button);
             });
 

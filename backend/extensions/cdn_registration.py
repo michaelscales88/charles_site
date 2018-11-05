@@ -17,3 +17,6 @@ def register_app_cdn(app):
     app.extensions['bootstrap']['cdns']['multiselect'] = WebCDN(
         'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/'
     )
+    app.extensions['bootstrap']['cdns']['fontAwesome'] = WebCDN(
+        'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/'
+    )
