@@ -6,5 +6,9 @@ INVENTORY_MODULE_ROUTES = {
     "GetBuyNowInfo": {
         "url": "/api/inventory/buy_info",
         "methods": {}
+    },
+    "OrderStatus": {
+        "url": "/api/inventory/order_status",
+        "methods": {}
     }
 }

@@ -28,7 +28,7 @@ class InventoryModel(db.Model):
 
     @hybrid_property
     def quantity(self):
-        return abs(
-            InventoryStockModel.get_quantity(self.id)
-            - SalesModel.get_quantity(self.id)
+        return round(
+            InventoryStockModel.get_quantity(self.id) - SalesModel.get_quantity(self.id),
+            2
         )

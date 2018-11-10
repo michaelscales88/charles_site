@@ -5,6 +5,7 @@ SITE_NAME = os.getenv("SITE_NAME", "DEFAULT")
 # Flask-Bootstrap Settings
 BOOTSTRAP_SERVE_LOCAL = False
 BOOTSTRAP_USE_MINIFIED = False
+BOOTSTRAP_CDN_FORCE_SSL = True
 
 # Flask-Mail settings
 MAIL_USERNAME = os.getenv('MAIL_USERNAME', 'youremail@example.com')

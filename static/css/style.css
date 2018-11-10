@@ -7,6 +7,11 @@
     padding: 15px;
 }
 
+.custom-divider {
+    background-color: black;
+    border-color: transparent;
+}
+
 .banner-image {
     width: 100%;
     object-fit: cover;

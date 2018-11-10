@@ -1,74 +1,79 @@
 {# Use bootstrap page scaffolding #}
 {%- extends "bootstrap/base.html" %}
-{% block html_attribs %}lang="en"{% endblock %}
 {% block title %}
-    {% if title %}{{ title }}{% else %}Default{% endif %}
+    {% if title %}{{ title }}{% else %}San Marcos Roasting Co{% endif %}
 {% endblock title %}
 
-{# IE compatibility #}
+{# fixes for legacy browsers. #}
 {% import "bootstrap/fixes.html" as fixes %}
 
+{% block meta %}
+    {{ super() }}
+    <meta charset="UTF-8">
+{% endblock %}
+
 {% block head %}
-{{ super() }}
-{{ fixes.ie8() }}
-<link rel="shortcut icon" type="image/x-icon"
-      href="{{ url_for('static', filename='favicon.ico') }}">
-{%- endblock head %}
+    {{super()}}
+
+    {# fixes for legacy browsers. #}
+    {{fixes.ie8()}}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{%- endblock %}
 
 {% block styles -%}
-{{ super() }}
-<!-- Local CSS Files -->
-{% assets "css_all" %}
-<link rel="stylesheet" href="{{ ASSET_URL }}" />
-{% endassets %}
+    {{ super() }}
+    <!-- Local CSS Files -->
+    {% assets "css_all" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
 
-<!-- CDN CSS Files-->
-<link href="{{ bootstrap_find_resource('css/jquery.dataTables.css', cdn='dataTable', use_minified=true) }}"
-      rel="stylesheet">
-<link href="{{ bootstrap_find_resource('css/buttons.dataTables.css', cdn='dataTableBtns', use_minified=true) }}"
-      rel="stylesheet">
-<link href="{{ bootstrap_find_resource('css/bootstrap-select.css', cdn='multiselect', use_minified=true) }}"
+    <!-- CDN CSS Files-->
+    <link href="{{ bootstrap_find_resource('css/jquery.dataTables.css', cdn='dataTable', use_minified=true) }}"
           rel="stylesheet">
-<link href="{{ bootstrap_find_resource('css/font-awesome.css', cdn='fontAwesome', use_minified=true) }}"
+    <link href="{{ bootstrap_find_resource('css/buttons.dataTables.css', cdn='dataTableBtns', use_minified=true) }}"
+          rel="stylesheet">
+    <link href="{{ bootstrap_find_resource('css/bootstrap-select.css', cdn='multiselect', use_minified=true) }}"
+          rel="stylesheet">
+    <link href="{{ bootstrap_find_resource('css/font-awesome.css', cdn='fontAwesome', use_minified=true) }}"
           rel="stylesheet">
 {% endblock styles %}
 
 {% block navbar %}
-{{ super() }}
-{{ nav.secnavbar.render(renderer='bootstrap') }}
-{% import "bootstrap/utils.html" as utils %}
-<div class="container-fluid">
-    <!-- Flask - Alert area -->
-    {%- with messages = get_flashed_messages(with_categories=True) %}
-    {%- if messages %}
-    <div class="row">
-        <div class="col-md-12">{{ utils.flashed_messages(messages, dismissible=True) }}</div>
+    {{ super() }}
+    {{ nav.secnavbar.render(renderer='bootstrap') }}
+    {% import "bootstrap/utils.html" as utils %}
+    <div class="container-fluid">
+        <!-- Flask - Alert area -->
+        {%- with messages = get_flashed_messages(with_categories=True) %}
+            {%- if messages %}
+                <div class="row">
+                    <div class="col-md-12">{{ utils.flashed_messages(messages, dismissible=True) }}</div>
+                </div>
+            {%- endif %}
+        {%- endwith %}
     </div>
-    {%- endif %}
-    {%- endwith %}
-</div>
 {% endblock navbar %}
 
 {% block scripts %}
-{{ super() }}
+    {{ super() }}
 
-<!-- CDN JS Files-->
-<script src="{{ bootstrap_find_resource('js/jquery.dataTables.js', cdn='dataTable', use_minified=true) }}"></script>
-<script src="{{ bootstrap_find_resource('js/dataTables.buttons.js', cdn='dataTableBtns', use_minified=true) }}"></script>
-<script src="{{ bootstrap_find_resource('js/bootstrap-select.js', cdn='multiselect', use_minified=true) }}"></script>
+    <!-- CDN JS Files-->
+    <script src="{{ bootstrap_find_resource('js/jquery.dataTables.js', cdn='dataTable', use_minified=true) }}"></script>
+    <script src="{{ bootstrap_find_resource('js/dataTables.buttons.js', cdn='dataTableBtns', use_minified=true) }}"></script>
+    <script src="{{ bootstrap_find_resource('js/bootstrap-select.js', cdn='multiselect', use_minified=true) }}"></script>
 
-<!-- Load all the servers static files bundled and minified -->
-{% assets "js_all" %}<script type="text/javascript" src="{{ ASSET_URL }}"></script>{% endassets %}
+    <!-- Load all the servers static files bundled and minified -->
+    {% assets "js_all" %}<script type="text/javascript" src="{{ ASSET_URL }}"></script>{% endassets %}
 
-<!-- Manage AJAX requests -->
-<script>
-$(document).ready(function () {
-    // Set all our ajax calls to have the necessary headers for the server.
-    $.ajaxSetup({
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-        }
-    });
-});
-</script>
+    <!-- Manage AJAX requests -->
+    <script>
+        $(document).ready(function () {
+            // Set all our ajax calls to have the necessary headers for the server.
+            $.ajaxSetup({
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+                }
+            });
+        });
+    </script>
 {% endblock scripts %}

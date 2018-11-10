@@ -9,9 +9,10 @@ function loadAboutPage(api) {
                 for (const entry in aboutInfo) {
                     if (aboutInfo.hasOwnProperty(entry)) {
                         aboutArea += `
-                            <div class="row-fluid">
+                            <hr class="col-xs-12 custom-divider">
+                            <div class="row">
                                 <div class="col-md-4">
-                                    <img style="width: 100%;" src="/static/img/${aboutInfo[entry].path}">
+                                    <img class="banner-image" src="/static/img/${aboutInfo[entry].path}">
                                 </div>
                                 <div class="col-md-8">
                                     <h3>${aboutInfo[entry].title}</h3>

@@ -3,13 +3,10 @@ function buyNow(id) {
         url: "/api/inventory/buy_info",
         method: "POST",
         dataType: "JSON",
-        data: JSON.stringify({
-            id: id
-        }),
+        data: JSON.stringify({id: id}),
         success: function (json, statusCode) {
             if (statusCode === 'success') {
-                let buy_info = JSON.parse(json);
-                console.log(buy_info);
+                const buy_info = JSON.parse(json);
                 $('#buyNowTitle').html(buy_info.name);
                 $('#buyNowArea').html(
                     `<div class="container-fluid">
@@ -19,7 +16,7 @@ function buyNow(id) {
                             <div class="col-lg-4"><i class="fa fa-dollar"></i><b>${buy_info.retail}</b></div>
                         </div>
                         <div class="row text-center">
-                            <div class="text-center">${buy_info.buy_button}</div>
+                            <div class="text-center">${buy_info.buttons}</div>
                         </div>
                     </div>`
                 );

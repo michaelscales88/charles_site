@@ -3,30 +3,21 @@
 
 {% block content %}
 {{ super() }}
-{% include 'inventory/buyNowModal.html' %}
+{% include 'components/buyNowModal.html' %}
 <div class="container-fluid">
-    <div class="row-fluid image-area-row">
+    <div class="row image-area-row">
         <img class="img-fluid banner-image img-rounded" src="/static/img/top_image.JPG">
     </div>
-    <div class="row-fluid jumbotron main-area-row">
+    <div class="row jumbotron main-area-row">
         <h2><u>Available Coffee Stock</u></h2>
         <div id="tableDiv"></div>
     </div>
-    <div class="row-fluid image-area-row">
+    <div class="row image-area-row">
         <img class="img-fluid banner-image img-rounded" src="/static/img/bottom_image.JPG">
     </div>
 </div>
 
-{% block footer %}
-<footer class="page-footer font-small navbar-inverse navbar-fixed-bottom text-center">
-    <div class="btn-group footer-copyright py-3" role="group">
-        <a class="btn btn-secondary" type="button" href="mailto:sanmarcosroastingco@gmail.com">Email Us</a>
-        <a class="btn btn-secondary" type="button">Owned by Charles Cruz</a>
-        <a class="btn btn-secondary" type="button" id="topButton">Back to Top</a>
-    </div>
-</footer>
-{% endblock footer %}
-
+{% include 'components/footer.html' %}
 {% endblock content %}
 
 {% block scripts %}

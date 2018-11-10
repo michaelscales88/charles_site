@@ -26,7 +26,7 @@ def create_user():
 
         user_datastore.create_user(
             username='admin',
-            password=hash_password('password'),
+            password=hash_password(server.config['DEFAULT_PASSWORD']),
             roles=["superuser"]
         )
 

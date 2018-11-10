@@ -17,15 +17,27 @@ class CurrencyField(fields.Field):
 
 
 class InventorySchema(ma.ModelSchema):
+    stock = fields.Method("buy_now_quantity")
+
     class Meta:
-        fields = ("id", "name", "retail", "quantity")
+        fields = ("id", "name", "retail", "stock")
         model = InventoryModel
+
+    @staticmethod
+    def buy_now_quantity(obj):
+        return obj.quantity if obj.quantity > 0 else 0
 
 
 class BuyNowSchema(ma.ModelSchema):
+    buttons = fields.Method('buy_now_button')
+
     class Meta:
-        fields = ("name", "path", "retail", "buy_button", "description")
+        fields = ("name", "path", "retail", "buttons", "description")
         model = InventoryModel
+
+    @staticmethod
+    def buy_now_button(obj):
+        return obj.buy_button if obj.quantity > 0 else "Out of Stock"
 
 
 inv_table_schema = InventorySchema(many=True)
