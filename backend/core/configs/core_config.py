@@ -3,7 +3,7 @@ import os
 
 
 # Application Settings
-SITE_NAME = os.getenv("SITE_NAME", "DEFAULT")
+SITE_NAME = os.getenv("SITE_NAME", "San Marcos Roasting Company")
 BASE_DIR = os.path.abspath(
     os.path.dirname(os.getenv("FLASK_APP", "backend"))  # Find the root path
 
