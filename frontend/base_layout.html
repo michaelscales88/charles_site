@@ -23,9 +23,11 @@
 {% block styles -%}
     {{ super() }}
     <!-- Local CSS Files -->
-    {% assets "css_all" %}
-        <link rel="stylesheet" href="{{ ASSET_URL }}" />
-    {% endassets %}
+{#    {% assets "css_all" %}#}
+{#        <link rel="stylesheet" href="{{ ASSET_URL }}" />#}
+{#    {% endassets %}#}
+    <link rel="stylesheet" href="/static/css/main.css" />
+
 
     <!-- CDN CSS Files-->
     <link href="{{ bootstrap_find_resource('css/jquery.dataTables.css', cdn='dataTable', use_minified=true) }}"
