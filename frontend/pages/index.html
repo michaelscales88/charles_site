@@ -4,33 +4,31 @@
 {% block content %}
     {{ super() }}
     {% include 'components/buyNowModal.html' %}
-    <!-- Main -->
-    <section id="main">
+    <body>
+    <!-- Banner -->
+    <section id="banner">
         <div class="inner">
-            <header class="major special">
-                <img class="img-fluid banner-image img-rounded" src="/static/img/top_image.JPG">
-            </header>
-
-            <!-- Text -->
-            <section>
-                <div class="jumbotron main-area-row">
-                    <h2><u>Available Coffee Stock</u></h2>
-                    <div id="tableDiv"></div>
-                </div>
-            </section>
-
-            <!-- Image -->
-            <section>
-                <div class="box alt">
-                    <div class="row 50% uniform">
-                    <img class="img-rounded" src="/static/img/bottom_image.JPG">
-                    </div>
-                </div>
-            </section>
-
-        </div>
+            <h1>San Marcos Roasting Company: <br><span>A Hill Country Favorite</span></h1>
         </div>
     </section>
+
+    <!-- One -->
+    <section id="one">
+        <h2><u>Available Coffee Stock</u></h2>
+        <div class="inner">
+            <div id="tableDiv"></div>
+        </div>
+    </section>
+
+{#    <!-- Two -->#}
+{#    <section id="two">#}
+{#        <!-- Future Content Area -->#}
+{#    </section>#}
+{##}
+{#    <!-- Three -->#}
+{#    <section id="three">#}
+{#        <!-- Future Content Area -->#}
+{#    </section>#}
 
     <!-- Footer -->
     <section id="footer">
@@ -55,12 +53,9 @@
                     <li><input type="submit" value="Send Message" class="alt"/></li>
                 </ul>
             </form>
-            <div class="copyright">
-                &copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a
-                    href="https://unsplash.com/">Unsplash</a>
-            </div>
         </div>
     </section>
+    </body>
     {% include 'components/footer.html' %}
 {% endblock content %}
 

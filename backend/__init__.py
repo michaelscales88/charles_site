@@ -41,19 +41,17 @@ js = Bundle(
     'js/gridArea.js',
     'js/buyNow.js',
     'js/backToTop.js',
+    'js/main.js',
+    'js/util.js',
     filters='jsmin', output='gen/packed.js'
 )
 css = Bundle(
-    'css/style.css',
+    'css/font-awesome.min.css',
+    'css/main.css',
     filters='cssmin', output='gen/all.css'
 )
 assets.register('js_all', js)
 assets.register('css_all', css)
-
-# Nav Settings
-nav = frontend.get_nav()
-nav.init_app(server)
-frontend.register_nav_renderers(server)
 
 # Register HTML endpoints
 server.register_blueprint(frontend.frontend_bp)

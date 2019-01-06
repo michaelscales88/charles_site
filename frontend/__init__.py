@@ -1,8 +1,6 @@
 # templates/frontend.py
 from flask import Blueprint, render_template, request, redirect, url_for
 
-from .navbar import get_nav, register_nav_renderers
-
 frontend_bp = Blueprint('frontend', __name__)
 
 

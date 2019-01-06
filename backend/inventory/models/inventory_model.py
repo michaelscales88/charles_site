@@ -24,7 +24,10 @@ class InventoryModel(db.Model):
 
     @hybrid_property
     def path(self):
-        return form.thumbgen_filename(self.image.path)
+        if self.image:
+            return form.thumbgen_filename(self.image.path)
+        else:
+            return ''
 
     @hybrid_property
     def quantity(self):

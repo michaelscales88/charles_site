@@ -13,37 +13,48 @@
 {% endblock %}
 
 {% block head %}
-    {{super()}}
+    {{ super() }}
 
     {# fixes for legacy browsers. #}
-    {{fixes.ie8()}}
+    {{ fixes.ie8() }}
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {%- endblock %}
 
 {% block styles -%}
     {{ super() }}
-    <!-- Local CSS Files -->
-{#    {% assets "css_all" %}#}
-{#        <link rel="stylesheet" href="{{ ASSET_URL }}" />#}
-{#    {% endassets %}#}
-    <link rel="stylesheet" href="/static/css/main.css" />
-
-
     <!-- CDN CSS Files-->
-    <link href="{{ bootstrap_find_resource('css/jquery.dataTables.css', cdn='dataTable', use_minified=true) }}"
-          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="{{ bootstrap_find_resource('css/buttons.dataTables.css', cdn='dataTableBtns', use_minified=true) }}"
           rel="stylesheet">
     <link href="{{ bootstrap_find_resource('css/bootstrap-select.css', cdn='multiselect', use_minified=true) }}"
           rel="stylesheet">
     <link href="{{ bootstrap_find_resource('css/font-awesome.css', cdn='fontAwesome', use_minified=true) }}"
           rel="stylesheet">
+
+    <!-- Local CSS Files -->
+    {% assets "css_all" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}"/>
+    {% endassets %}
 {% endblock styles %}
 
 {% block navbar %}
     {{ super() }}
-    {{ nav.secnavbar.render(renderer='bootstrap') }}
     {% import "bootstrap/utils.html" as utils %}
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="{{ url_for('frontend.index') }}" class="logo">San Marcos Roasting Co</a>
+            <nav id="nav">
+                <a href="{{ url_for('frontend.index') }}">Home</a>
+                <a href="{{ url_for('frontend.about') }}">About</a>
+                <a href="{{ url_for('admin.index') }}">Admin</a>
+            </nav>
+        </div>
+    </header>
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+    <!-- Notifications -->
     <div class="container-fluid">
         <!-- Flask - Alert area -->
         {%- with messages = get_flashed_messages(with_categories=True) %}
@@ -59,13 +70,13 @@
 {% block scripts %}
     {{ super() }}
 
-    <!-- CDN JS Files-->
     <script src="{{ bootstrap_find_resource('js/jquery.dataTables.js', cdn='dataTable', use_minified=true) }}"></script>
     <script src="{{ bootstrap_find_resource('js/dataTables.buttons.js', cdn='dataTableBtns', use_minified=true) }}"></script>
     <script src="{{ bootstrap_find_resource('js/bootstrap-select.js', cdn='multiselect', use_minified=true) }}"></script>
+    <script src="/static/js/skel.min.js"></script>
 
-    <!-- Load all the servers static files bundled and minified -->
-    {% assets "js_all" %}<script type="text/javascript" src="{{ ASSET_URL }}"></script>{% endassets %}
+    {% assets "js_all" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>{% endassets %}
 
     <!-- Manage AJAX requests -->
     <script>
